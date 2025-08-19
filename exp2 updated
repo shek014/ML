@@ -1,0 +1,346 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyNdOdRDS1MIs/voeXypXjgG"
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "7ewT1w8PKnRl",
+        "outputId": "cdc929cf-4c9a-4260-91af-6e843ade8397"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "   MODELYEAR   MAKE       MODEL VEHICLECLASS  ENGINESIZE  CYLINDERS  \\\n",
+            "0       2014  ACURA         ILX      COMPACT         2.0          4   \n",
+            "1       2014  ACURA         ILX      COMPACT         2.4          4   \n",
+            "2       2014  ACURA  ILX HYBRID      COMPACT         1.5          4   \n",
+            "3       2014  ACURA     MDX 4WD  SUV - SMALL         3.5          6   \n",
+            "4       2014  ACURA     RDX AWD  SUV - SMALL         3.5          6   \n",
+            "\n",
+            "  TRANSMISSION FUELTYPE  FUELCONSUMPTION_CITY  FUELCONSUMPTION_HWY  \\\n",
+            "0          AS5        Z                   9.9                  6.7   \n",
+            "1           M6        Z                  11.2                  7.7   \n",
+            "2          AV7        Z                   6.0                  5.8   \n",
+            "3          AS6        Z                  12.7                  9.1   \n",
+            "4          AS6        Z                  12.1                  8.7   \n",
+            "\n",
+            "   FUELCONSUMPTION_COMB  FUELCONSUMPTION_COMB_MPG  CO2EMISSIONS  \n",
+            "0                   8.5                        33           196  \n",
+            "1                   9.6                        29           221  \n",
+            "2                   5.9                        48           136  \n",
+            "3                  11.1                        25           255  \n",
+            "4                  10.6                        27           244  \n"
+          ]
+        }
+      ],
+      "source": [
+        "import pandas as pd\n",
+        "\n",
+        "df = pd.read_csv(\"/content/FuelConsumption (2).csv\")\n",
+        "\n",
+        "print(df.head())\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import pandas as pd\n",
+        "\n",
+        "df = pd.read_csv(\"/content/FuelConsumption (2).csv\")\n",
+        "\n",
+        "print(df.tail())"
+      ],
+      "metadata": {
+        "id": "f2jltVmpRB5t"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import pandas as pd\n",
+        "\n",
+        "df = pd.read_csv(\"/content/FuelConsumption (2).csv\")\n",
+        "\n",
+        "print(df.columns)"
+      ],
+      "metadata": {
+        "id": "FsclokuWRNzK"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import pandas as pd\n",
+        "\n",
+        "df = pd.read_csv(\"/content/FuelConsumption (2).csv\")\n",
+        "\n",
+        "print(df.shape)"
+      ],
+      "metadata": {
+        "id": "xfplTKQqRQCh"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import pandas as pd\n",
+        "\n",
+        "df = pd.read_csv(\"/content/FuelConsumption (2).csv\")\n",
+        "\n",
+        "# print(df.columns.tolist())"
+      ],
+      "metadata": {
+        "id": "dAoGLEHPRSTL"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import pandas as pd\n",
+        "\n",
+        "df = pd.read_csv(\"/content/FuelConsumption (2).csv\")\n",
+        "\n",
+        "print(df.describe())"
+      ],
+      "metadata": {
+        "id": "aA5SyubeRTpJ"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import pandas as pd\n",
+        "\n",
+        "df = pd.read_csv(\"/content/FuelConsumption (2).csv\")\n",
+        "\n",
+        "print(df.info())"
+      ],
+      "metadata": {
+        "id": "vnWlvXeSRZVS"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import pandas as pd\n",
+        "\n",
+        "df = pd.read_csv(\"/content/FuelConsumption (2).csv\")\n",
+        "\n",
+        "df_ffill = df.copy()\n",
+        "df_ffill['FUELCONSUMPTION_CITY'] = df_ffill['FUELCONSUMPTION_CITY'].fillna(method = 'ffill')\n",
+        "print(df_ffill.isnull().sum)\n",
+        "print(df_ffill.describe(include = 'all'))"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "rhclRQH6RasZ",
+        "outputId": "6e0fba6b-b2e0-4589-bcda-fbf72af8da1b"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "<bound method DataFrame.sum of       MODELYEAR   MAKE  MODEL  VEHICLECLASS  ENGINESIZE  CYLINDERS  \\\n",
+            "0         False  False  False         False       False      False   \n",
+            "1         False  False  False         False       False      False   \n",
+            "2         False  False  False         False       False      False   \n",
+            "3         False  False  False         False       False      False   \n",
+            "4         False  False  False         False       False      False   \n",
+            "...         ...    ...    ...           ...         ...        ...   \n",
+            "1062      False  False  False         False       False      False   \n",
+            "1063      False  False  False         False       False      False   \n",
+            "1064      False  False  False         False       False      False   \n",
+            "1065      False  False  False         False       False      False   \n",
+            "1066      False  False  False         False       False      False   \n",
+            "\n",
+            "      TRANSMISSION  FUELTYPE  FUELCONSUMPTION_CITY  FUELCONSUMPTION_HWY  \\\n",
+            "0            False     False                 False                False   \n",
+            "1            False     False                 False                False   \n",
+            "2            False     False                 False                False   \n",
+            "3            False     False                 False                False   \n",
+            "4            False     False                 False                False   \n",
+            "...            ...       ...                   ...                  ...   \n",
+            "1062         False     False                 False                False   \n",
+            "1063         False     False                 False                False   \n",
+            "1064         False     False                 False                False   \n",
+            "1065         False     False                 False                False   \n",
+            "1066         False     False                 False                False   \n",
+            "\n",
+            "      FUELCONSUMPTION_COMB  FUELCONSUMPTION_COMB_MPG  CO2EMISSIONS  \n",
+            "0                    False                     False         False  \n",
+            "1                    False                     False         False  \n",
+            "2                    False                     False         False  \n",
+            "3                    False                     False         False  \n",
+            "4                    False                     False         False  \n",
+            "...                    ...                       ...           ...  \n",
+            "1062                 False                     False         False  \n",
+            "1063                 False                     False         False  \n",
+            "1064                 False                     False         False  \n",
+            "1065                 False                     False         False  \n",
+            "1066                 False                     False         False  \n",
+            "\n",
+            "[1067 rows x 13 columns]>\n",
+            "        MODELYEAR  MAKE         MODEL VEHICLECLASS   ENGINESIZE    CYLINDERS  \\\n",
+            "count      1067.0  1067          1067         1067  1067.000000  1067.000000   \n",
+            "unique        NaN    39           663           16          NaN          NaN   \n",
+            "top           NaN  FORD  F150 FFV 4X4     MID-SIZE          NaN          NaN   \n",
+            "freq          NaN    90             8          178          NaN          NaN   \n",
+            "mean       2014.0   NaN           NaN          NaN     3.346298     5.794752   \n",
+            "std           0.0   NaN           NaN          NaN     1.415895     1.797447   \n",
+            "min        2014.0   NaN           NaN          NaN     1.000000     3.000000   \n",
+            "25%        2014.0   NaN           NaN          NaN     2.000000     4.000000   \n",
+            "50%        2014.0   NaN           NaN          NaN     3.400000     6.000000   \n",
+            "75%        2014.0   NaN           NaN          NaN     4.300000     8.000000   \n",
+            "max        2014.0   NaN           NaN          NaN     8.400000    12.000000   \n",
+            "\n",
+            "       TRANSMISSION FUELTYPE  FUELCONSUMPTION_CITY  FUELCONSUMPTION_HWY  \\\n",
+            "count          1067     1067           1067.000000          1067.000000   \n",
+            "unique           22        4                   NaN                  NaN   \n",
+            "top              A6        X                   NaN                  NaN   \n",
+            "freq            222      514                   NaN                  NaN   \n",
+            "mean            NaN      NaN             13.296532             9.474602   \n",
+            "std             NaN      NaN              4.101253             2.794510   \n",
+            "min             NaN      NaN              4.600000             4.900000   \n",
+            "25%             NaN      NaN             10.250000             7.500000   \n",
+            "50%             NaN      NaN             12.600000             8.800000   \n",
+            "75%             NaN      NaN             15.550000            10.850000   \n",
+            "max             NaN      NaN             30.200000            20.500000   \n",
+            "\n",
+            "        FUELCONSUMPTION_COMB  FUELCONSUMPTION_COMB_MPG  CO2EMISSIONS  \n",
+            "count            1067.000000               1067.000000   1067.000000  \n",
+            "unique                   NaN                       NaN           NaN  \n",
+            "top                      NaN                       NaN           NaN  \n",
+            "freq                     NaN                       NaN           NaN  \n",
+            "mean               11.580881                 26.441425    256.228679  \n",
+            "std                 3.485595                  7.468702     63.372304  \n",
+            "min                 4.700000                 11.000000    108.000000  \n",
+            "25%                 9.000000                 21.000000    207.000000  \n",
+            "50%                10.900000                 26.000000    251.000000  \n",
+            "75%                13.350000                 31.000000    294.000000  \n",
+            "max                25.800000                 60.000000    488.000000  \n"
+          ]
+        },
+        {
+          "output_type": "stream",
+          "name": "stderr",
+          "text": [
+            "/tmp/ipython-input-2769642480.py:6: FutureWarning: Series.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.\n",
+            "  df_ffill['FUELCONSUMPTION_CITY'] = df_ffill['FUELCONSUMPTION_CITY'].fillna(method = 'ffill')\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import pandas as pd\n",
+        "\n",
+        "df = pd.read_csv(\"/content/FuelConsumption (2).csv\")\n",
+        "\n",
+        "df_bfill = df.copy()\n",
+        "df_bfill['FUELCONSUMPTION_CITY'] = df_bfill['FUELCONSUMPTION_CITY'].fillna(method = 'bfill')\n",
+        "print(df_bfill.isnull().sum)\n"
+      ],
+      "metadata": {
+        "id": "ble6iWDXRdSK"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#text to numerical\n",
+        "#one hot encoder\n",
+        "#categorical\n",
+        "#Laber encoder\n",
+        "from sklearn.preprocessing import LabelEncoder\n",
+        "\n",
+        "#label encoding 'sex' column vehicleclass\n",
+        "df_encoded = df.copy()\n",
+        "le = LabelEncoder()\n",
+        "df_encoded['VEHICLECLASS'] = le.fit_transform(df_encoded['VEHICLECLASS'])\n",
+        "print(df_encoded[['VEHICLECLASS']])"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "SdRJ7NgtUYdA",
+        "outputId": "53d23749-ea3c-46a0-9a1a-af0f133659ab"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "      VEHICLECLASS\n",
+            "0                0\n",
+            "1                0\n",
+            "2                0\n",
+            "3               11\n",
+            "4               11\n",
+            "...            ...\n",
+            "1062            11\n",
+            "1063            11\n",
+            "1064            11\n",
+            "1065            11\n",
+            "1066            12\n",
+            "\n",
+            "[1067 rows x 1 columns]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#one hot encoder\n",
+        "from sklearn.preprocessing import OneHotEncoder\n",
+        "\n"
+      ],
+      "metadata": {
+        "id": "yMtBgD3kX8bJ"
+      },
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
